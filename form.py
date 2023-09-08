@@ -53,6 +53,12 @@ class Register:
             sheet.cell(row=1, column=3, value="Contact No")
             sheet.cell(row=1, column=4, value="Address")
 
+            if sheet.cell(row=1, column=1).value is None:
+                sheet.cell(row=1, column=1, value="Name")
+                sheet.cell(row=1, column=2, value="Email")
+                sheet.cell(row=1, column=3, value="Contact No")
+                sheet.cell(row=1, column=4, value="Address")
+
         # Find the next empty row in the Excel file
         row = sheet.max_row + 1
 
