@@ -34,18 +34,18 @@ class Register:
         contact = self.contact_var.get()
         address = self.address_var.get()
 
-        # Create or open an Excel workbook
+        
         workbook = openpyxl.Workbook()
 
-        # Create or select a worksheet
+        
         sheet = workbook.active
 
-        # Add headers if the Excel file is empty (if row 1 is empty)
+        
         try:
             workbook = openpyxl.load_workbook("registration_data.xlsx")
             sheet = workbook.active
         except FileNotFoundError:
-            # If the file doesn't exist, create a new workbook and worksheet
+            
             workbook = openpyxl.Workbook()
             sheet = workbook.active
             sheet.cell(row=1, column=1, value="Name")
@@ -59,19 +59,19 @@ class Register:
                 sheet.cell(row=1, column=3, value="Contact No")
                 sheet.cell(row=1, column=4, value="Address")
 
-        # Find the next empty row in the Excel file
+        
         row = sheet.max_row + 1
 
-        # Write the data to the worksheet
+        
         sheet.cell(row=row, column=1, value=name)
         sheet.cell(row=row, column=2, value=email)
         sheet.cell(row=row, column=3, value=contact)
         sheet.cell(row=row, column=4, value=address)
 
-        # Save the workbook to a file
+        
         workbook.save("registration_data.xlsx")
         
-        # Optionally, provide a message to indicate successful save
+        
         print("Data saved to registration_data.xlsx")
 
 
